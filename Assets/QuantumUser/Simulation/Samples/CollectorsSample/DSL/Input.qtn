@@ -1,4 +1,0 @@
-input
-{
-    FPVector2 Movement;
-}

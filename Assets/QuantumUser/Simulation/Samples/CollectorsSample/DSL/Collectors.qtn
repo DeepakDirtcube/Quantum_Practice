@@ -1,8 +1,0 @@
-﻿component Collector
-{
-    entity_ref DesiredCollectible;
-    Boolean HasCollectible;
-    FP Speed;
-}
-
-component Collectible {}

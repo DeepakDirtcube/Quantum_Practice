@@ -1,4 +1,0 @@
-component PlayerLink
-{
-    PlayerRef Ref;
-}
