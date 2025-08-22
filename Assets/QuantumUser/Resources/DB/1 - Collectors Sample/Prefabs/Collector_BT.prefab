@@ -1171,7 +1171,7 @@ MonoBehaviour:
     HasCollectible:
       Value: 0
     Speed:
-      RawValue: 327680
+      RawValue: 65536
 --- !u!114 &6228367521947900481
 MonoBehaviour:
   m_ObjectHideFlags: 0

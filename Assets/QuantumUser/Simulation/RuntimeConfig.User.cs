@@ -8,7 +8,7 @@ namespace Quantum
   {
     public AssetRef<EntityPrototype> CollectiblePrototype;
 
-     // The prototype to be spawned for players, by default without any bot specific component
+    // The prototype to be spawned for players, by default without any bot specific component
     public AssetRef<EntityPrototype> PlayerCollectorPrototype;
 
     // Which HFSMs should take control when replacing disconnected players
@@ -26,6 +26,9 @@ namespace Quantum
 
     // Bots to be created independently of player replacement and fill room features
     public AssetRef<EntityPrototype>[] Bots;
+
+    public FPVector2[] SpawnPositions;      // if true, uses these
+
   }
 
   [Serializable]
@@ -39,23 +42,23 @@ namespace Quantum
     public CollectorsSampleRuntimeConfig CollectorsSampleConfig;
     public SpellcasterSampleRuntimeConfig SpellcasterSampleConfig;
 
-    partial void SerializeUserData(BitStream stream)
-    {
-      stream.Serialize(ref CollectorsSampleConfig.CollectiblePrototype);
-      stream.Serialize(ref CollectorsSampleConfig.PlayerCollectorPrototype);
-      stream.Serialize(ref CollectorsSampleConfig.ReplacementHFSM);
-      stream.Serialize(ref CollectorsSampleConfig.ReplacementAIBlackboard);
-      stream.Serialize(ref CollectorsSampleConfig.ReplaceOnDisconnect);
-      stream.Serialize(ref CollectorsSampleConfig.FillRoom);
-      stream.Serialize(ref CollectorsSampleConfig.FillRoomCooldown);
+    // partial void SerializeUserData(BitStream stream)
+    // {
+    //   stream.Serialize(ref CollectorsSampleConfig.CollectiblePrototype);
+    //   stream.Serialize(ref CollectorsSampleConfig.PlayerCollectorPrototype);
+    //   stream.Serialize(ref CollectorsSampleConfig.ReplacementHFSM);
+    //   stream.Serialize(ref CollectorsSampleConfig.ReplacementAIBlackboard);
+    //   stream.Serialize(ref CollectorsSampleConfig.ReplaceOnDisconnect);
+    //   stream.Serialize(ref CollectorsSampleConfig.FillRoom);
+    //   stream.Serialize(ref CollectorsSampleConfig.FillRoomCooldown);
 
-      stream.SerializeArrayLength(ref CollectorsSampleConfig.Bots);
-      for (int i = 0; i < CollectorsSampleConfig.Bots.Length; i++)
-      {
-        stream.Serialize(ref CollectorsSampleConfig.Bots[i].Id.Value);
-      }
-
-      stream.Serialize(ref SpellcasterSampleConfig.UTBlackboard);
-    }
+    //   stream.SerializeArrayLength(ref CollectorsSampleConfig.Bots);
+    //   for (int i = 0; i < CollectorsSampleConfig.Bots.Length; i++)
+    //   {
+    //     stream.Serialize(ref CollectorsSampleConfig.Bots[i].Id.Value);
+    //   }
+    //   stream.SerializeArrayLength(ref CollectorsSampleConfig.SpawnPositions);
+    //   stream.Serialize(ref SpellcasterSampleConfig.UTBlackboard);
+    // }
   }
 }

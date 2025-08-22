@@ -25,7 +25,9 @@ namespace Quantum
         var botPrototype = bots[i];
         var botEntity = frame.Create(botPrototype);
 
-        frame.Unsafe.GetPointer<Transform2D>(botEntity)->Position = new FPVector2(i * FP._2, -FP._2);
+        // frame.Unsafe.GetPointer<Transform2D>(botEntity)->Position = new FPVector2(i * FP._2, -FP._2);
+        frame.Unsafe.GetPointer<Transform2D>(botEntity)->Position = new FPVector2(i + 1 * frame.RuntimeConfig.CollectorsSampleConfig.SpawnPositions[i].X, frame.RuntimeConfig.CollectorsSampleConfig.SpawnPositions[i].Y);
+
 
         if (frame.TryGet<HFSMAgent>(botEntity, out var hfsmAgent) == true)
         {
@@ -37,7 +39,9 @@ namespace Quantum
           BotSDKDebuggerSystem.AddToDebugger(frame, botEntity, btAgent);
         }
       }
+
     }
+
 
     public override void Update(Frame frame, ref Filter filter)
     {
